@@ -33,11 +33,7 @@ RUN echo "\n## Installing Shibboleth IdP..." && \
     echo "${IDP_CHECKSUM} idp.tgz" > idp.tgz.sha256 && sha256sum -c idp.tgz.sha256 && \
     mkdir -p idp_src && tar -zxf idp.tgz -C idp_src --strip-components 1 && \
     rm -rf idp_src/bin/*.bat && \
-    echo "idp.entityID=$IDP_ID" > $SRC_DIR/temp.properties && \
-    idp_src/bin/install.sh -Didp.src.dir=/usr/local/src/idp_src -Didp.target.dir=/opt/shibboleth-idp \
-      -Didp.host.name=$IDP_HOSTNAME -Didp.scope=$IDP_SCOPE \
-      -Didp.sealer.password=password -Didp.keystore.password=password \
-      -Didp.noprompt=true -Didp.merge.properties=$SRC_DIR/temp.properties
+    echo "idp.entityID=$IDP_ID" > $SRC_DIR/temp.properties
 
 WORKDIR /opt/shibboleth_idp
 
