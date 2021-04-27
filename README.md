@@ -10,11 +10,10 @@
 single sign on (SSO) web application widely deployed in academic organisations. It's used by millions of staff and 
 students around the world.
 
-Shibwright is a lazy and inefficient alternative way to install or update the Shibboleth IdP software.
+Shibwright is a lazy and inefficient alternative way to install or update a Shibboleth IdP configuration.
 It is maintained by [Digital Identity Ltd.](http://digitalidentity.ltd.uk/). We're not sure how useful it actually is.
-Shibwright uses a Docker container to run the Shibboleth IdP installer on the local directory. It does not actually run
-the IdP software itself - you will need a Java web container such as Tomcat or Jetty, either installed locally or in a
-Docker container.
+Shibwright uses a Docker container to run the Shibboleth IdP installer on the local directory. Shibwright does not actually run the IdP software itself - you will need a Java web container such as Tomcat or Jetty, either installed locally or in a
+Docker container such as [Ishigaki](https://github.com/Digital-Identity-Labs/ishigaki/)
 
 ## Why use this?
 
@@ -25,7 +24,7 @@ Docker container.
 
 ## Any reasons not to use this?
 
-* It's an entire operating system and Java JDK just run an install script
+* It's an entire operating system and Java JDK just to run an install script
 
 ## Configuring and running Shibwright
 
@@ -39,14 +38,25 @@ Please check that Shibwright contains the latest version of the Shibboleth IdP b
 
 The easiest way to use Shibwright is to create a shell alias
 
+In bash:
 ```bash
-alias shibwright="docker run -it -v $PWD:/opt/shibboleth-idp --rm digitalidentity/shibwright"
+alias shibwright="docker run -it -v $(pwd):/opt/shibboleth-idp --rm digitalidentity/shibwright:latest"
+```
+
+In fish:
+```bash
+alias shibwright="docker run -it -v (pwd):/opt/shibboleth-idp --rm digitalidentity/shibwright:latest"
 ```
 
 After creating the alias you can run shibwright with `shibwright`.
 
-Shibwright will mount your *current directory* as the default install location `/opt/shibboleth-idp` - use the installer as
-if that's where you installing to, and the files will be created in your current directory.
+The Shibwright alias will mount your *current directory* as the default install location `/opt/shibboleth-idp` - use the installer as if that's where you installing to, and the files will be created in your current directory.
+
+You can run other commands by specifying them:
+
+`shibwright module.sh -e idp.intercept.Consent`
+
+Shibwright's $PATH will check in /opt/shibboleth-idp/bin first, and then /usr/local/src/idp_src/bin afterwards, so in an empty directory it will run commands from the installer source directory.
 
 Adjust the files to suit your use-case - see the
  [Shibboleth IdP documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Home) for lots more information.
