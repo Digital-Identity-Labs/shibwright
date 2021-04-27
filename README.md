@@ -67,7 +67,7 @@ Adjust the files to suit your use-case - see the
 
 ### Thanks
 * We're just packaging huge amounts of work by [The Shibboleth Consortium](https://www.shibboleth.net/consortium/) and
- the wider Shibboleth community. If your organisation depends on Shibboleth please consider supporting them.
+ the wider Shibboleth community. If your organisation depends on Shibboleth please consider supporting them with a donation or membership.
 
 ### Contributing
 You can request new features by creating an [issue](https://github.com/Digital-Identity-Labs/shibwright/issues), or
@@ -77,6 +77,6 @@ If you have a support contract with Mimoto, please [contact Mimoto](http://mimot
  than use Github.
 
 ### License
-Copyright (c) 2020 Digital Identity Ltd, UK
+Copyright (c) 2021 Digital Identity Ltd, UK
 
 Licensed under the MIT License
