@@ -1,7 +1,8 @@
 FROM bitnami/minideb:latest
 
 LABEL description="An inelegant, inefficient and pleasantly lazy way to install and update Shibboleth IdP files" \
-      maintainer="pete@digitalidentitylabs.com"
+      maintainer="pete@digitalidentitylabs.com" \
+      org.opencontainers.image.source="https://github.com/Digital-Identity-Labs/shibwright"
 
 ARG SRC_DIR=/usr/local/src
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
